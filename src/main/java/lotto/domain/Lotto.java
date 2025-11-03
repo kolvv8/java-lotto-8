@@ -8,6 +8,9 @@ public class Lotto {
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 45;
 
+    private static final String ERROR_PREFIX = "[ERROR] ";
+    private static final String ERROR_INVALID_SIZE = "로또 번호는 " + LOTTO_SIZE + "개이어야 합니다.";
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -16,10 +19,12 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
-        }
+        validateSize(numbers);
     }
 
-    // TODO: 추가 기능 구현
+    private void validateSize(List<Integer> numbers) {
+        if (numbers.size() != LOTTO_SIZE) {
+            throw new IllegalArgumentException(ERROR_PREFIX + ERROR_INVALID_SIZE);
+        }
+    }
 }
