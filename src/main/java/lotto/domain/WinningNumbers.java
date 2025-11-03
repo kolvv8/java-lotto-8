@@ -31,5 +31,12 @@ public class WinningNumbers {
             throw new IllegalArgumentException(ERROR_PREFIX + ERROR_BONUS_DUPLICATE);
         }
     }
+
+    public CheckLottoWinningRank calculateRank(Lotto lotto) {
+        int matchCount = lotto.countMatch(numbers);
+        boolean hasBonus = lotto.contains(bonusNumber);
+
+        return CheckLottoWinningRank.valueOf(matchCount, hasBonus);
+    }
 }
 
