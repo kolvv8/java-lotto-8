@@ -16,11 +16,12 @@ public class Lotto {
     private static final String ERROR_INVALID_SIZE = "로또 번호는 " + LOTTO_SIZE + "개이어야 합니다.";
     private static final String ERROR_OUT_OF_RANGE = "로또 번호는 " + MIN_NUMBER + "부터 " + MAX_NUMBER + " 사이의 숫자이어야 합니다.";
     private static final String ERROR_DUPLICATES = "로또 번호에 중복된 숫자가 있습니다.";
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = sortAndMakeReadOnly(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -73,5 +74,5 @@ public class Lotto {
         }
         return matchCount;
     }
-
 }
+
